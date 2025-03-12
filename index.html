@@ -23,7 +23,7 @@
 
         function showRandomImage() {
             const randomNumber = Math.floor(Math.random() * totalImages) + 1;
-            const randomImage = `images/image%20${randomNumber}.jpg`; // Encoding space as %20
+            const randomImage = `images/image-${randomNumber}.jpg`;
             const imgElement = document.getElementById("moodImage");
 
             imgElement.src = randomImage;
