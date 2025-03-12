@@ -7,24 +7,18 @@
     <style>
         body { text-align: center; font-family: Arial, sans-serif; margin: 50px; }
         button { padding: 15px 30px; font-size: 20px; cursor: pointer; }
-        #content { margin-top: 20px; font-size: 24px; }
-        img { margin-top: 20px; max-width: 80%; height: auto; border-radius: 10px; }
+        #content { margin-top: 20px; }
+        img { margin-top: 20px; max-width: 80%; height: auto; border-radius: 10px; display: none; }
     </style>
 </head>
 <body>
     <h1>Click the Button for a Mood Boost!</h1>
-    <button onclick="showRandomBoost()">Boost My Mood</button>
-    <div id="content"></div>
+    <button onclick="showRandomImage()">Boost My Mood</button>
+    <div id="content">
+        <img id="moodImage" src="" alt="Mood Boost Image">
+    </div>
 
     <script>
-        const boosts = [
-            "You are amazing! Keep going! 😊",
-            "Believe in yourself – you are stronger than you think! 💪",
-            "A smile is the best outfit – wear it every day! 😃",
-            "Success starts with small, positive steps. 🚀",
-            "You are capable of incredible things! 🌟"
-        ];
-
         const images = [
             "images/image1.jpg",
             "images/image2.jpg",
@@ -33,10 +27,11 @@
             "images/image5.jpg"
         ];
         
-        function showRandomBoost() {
-            const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
+        function showRandomImage() {
             const randomImage = images[Math.floor(Math.random() * images.length)];
-            document.getElementById("content").innerHTML = `<p>${randomBoost}</p><img src="${randomImage}" alt="Mood Boost Image">`;
+            const imgElement = document.getElementById("moodImage");
+            imgElement.src = randomImage;
+            imgElement.style.display = "block"; // Show image after clicking the button
         }
     </script>
 </body>
