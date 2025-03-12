@@ -19,21 +19,16 @@
     </div>
 
     <script>
-        const images = [
-            "images/image1.jpg",
-            "images/image2.jpg",
-            "images/image3.jpg",
-            "images/image4.jpg",
-            "images/image5.jpg"
-        ];
-        
+        const totalImages = 86; // Total number of images in the folder
+
         function showRandomImage() {
-            const randomImage = images[Math.floor(Math.random() * images.length)];
+            const randomNumber = Math.floor(Math.random() * totalImages) + 1;
+            const randomImage = `images/image%20${randomNumber}.jpg`; // Encoding space as %20
             const imgElement = document.getElementById("moodImage");
+
             imgElement.src = randomImage;
             imgElement.style.display = "block"; // Show image after clicking the button
         }
     </script>
 </body>
 </html>
-
