@@ -5,30 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Click Mood Boost</title>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; margin: 50px; }
-        button { padding: 15px 30px; font-size: 20px; cursor: pointer; }
-        #content { margin-top: 20px; }
-        img { margin-top: 20px; max-width: 80%; height: auto; border-radius: 10px; display: none; }
+        body { 
+            text-align: center; 
+            font-family: Arial, sans-serif; 
+            background-color: #FFD700; /* Bright, uplifting yellow */
+            margin: 0; 
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .ads {
+            width: 160px;
+            min-width: 160px;
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            text-align: center;
+        }
+
+        button { 
+            padding: 15px 30px; 
+            font-size: 20px; 
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto; 
+            max-width: 70vw;
+            max-height: 60vh;
+            object-fit: contain; 
+            border-radius: 10px;
+        }
+
+        .social-buttons {
+            margin-top: 10px;
+        }
+
+        .social-buttons a, .social-buttons button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 18px;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .facebook { background-color: #3b5998; }
+        .twitter { background-color: #1da1f2; }
+        .pinterest { background-color: #bd081c; }
+        .instagram { background-color: #E4405F; }
+
+        .ad-bottom {
+            width: 100%;
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 10px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Click the Button for a Mood Boost!</h1>
-    <button onclick="showRandomImage()">Boost My Mood</button>
-    <div id="content">
-        <img id="moodImage" src="" alt="Mood Boost Image">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="ads">Ad Banner</div>
+
+            <div class="main-content">
+                <h1>Click the Button for a Mood Boost!</h1>
+                <button onclick="showRandomImage()">Boost My Mood</button>
+                <div id="content">
+                    <img id="moodImage" style="display: none;" alt="Mood Boost Image">
+                </div>
+                <div class="social-buttons">
+                    <a href="#" id="facebookShare" class="facebook">Share on Facebook</a>
+                    <a href="#" id="twitterShare" class="twitter">Share on Twitter</a>
+                    <a href="#" id="pinterestShare" class="pinterest">Pin on Pinterest</a>
+                    <button onclick="shareOnInstagram()" class="instagram">Share on Instagram</button>
+                </div>
+            </div>
+
+            <div class="ads">Ad Banner</div>
+        </div>
+
+        <div class="ad-bottom">Ad Banner</div>
     </div>
 
     <script>
-        const totalImages = 86; // Total number of images in the folder
+        let currentImageUrl = "";
 
         function showRandomImage() {
+            const totalImages = 86;
             const randomNumber = Math.floor(Math.random() * totalImages) + 1;
-            const randomImage = `images/Image-${randomNumber}.jpg`;
-            const imgElement = document.getElementById("moodImage");
+            const randomImage = `images/image-${randomNumber}.jpg`;
 
+            const imgElement = document.getElementById("moodImage");
             imgElement.src = randomImage;
-            imgElement.style.display = "block"; // Show image after clicking the button
+            imgElement.style.display = "block";
+
+            currentImageUrl = window.location.origin + "/" + randomImage;
+            updateShareLinks(currentImageUrl);
+        }
+
+        function updateShareLinks(imageUrl) {
+            document.getElementById("facebookShare").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imageUrl)}`;
+            document.getElementById("twitterShare").href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(imageUrl)}&text=Check%20out%20this%20awesome%20image!`;
+            document.getElementById("pinterestShare").href = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(imageUrl)}&media=${encodeURIComponent(imageUrl)}&description=Check%20this%20out!`;
+        }
+
+        function shareOnInstagram() {
+            if (!currentImageUrl) {
+                alert("Click the button to get an image first!");
+                return;
+            }
+
+            const link = document.createElement("a");
+            link.href = currentImageUrl;
+            link.download = "mood-boost.jpg";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            alert("Image downloaded! Open Instagram and upload it manually.");
         }
     </script>
+
 </body>
 </html>
