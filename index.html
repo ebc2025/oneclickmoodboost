@@ -53,7 +53,7 @@
 
         img {
             display: block;
-            margin: 20px auto; 
+            margin: 20px auto 40px; /* Added bottom margin to create space above the bottom ad */
             max-width: 70vw;
             max-height: 60vh;
             object-fit: contain; 
@@ -92,18 +92,12 @@
             z-index: 1000;
         }
     </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Click Mood Boost</title>
-    <!-- Google AdSense Verification -->
-    <meta name="google-adsense-account" content="ca-pub-7333912836569127">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
 </head>
 <body>
-
     <div class="container">
         <div class="content-wrapper">
             <div class="ads">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7333912836569127" data-ad-slot="5214428532" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
@@ -123,7 +117,6 @@
             </div>
 
             <div class="ads">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7333912836569127" data-ad-slot="1133882608" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
@@ -131,7 +124,6 @@
     </div>
 
     <div class="ad-bottom">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7333912836569127" data-ad-slot="2588265193" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
@@ -156,6 +148,22 @@
             document.getElementById("facebookShare").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imageUrl)}`;
             document.getElementById("twitterShare").href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(imageUrl)}&text=Check%20out%20this%20awesome%20image!`;
             document.getElementById("pinterestShare").href = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(imageUrl)}&media=${encodeURIComponent(imageUrl)}&description=Check%20this%20out!`;
+        }
+
+        function shareOnInstagram() {
+            if (!currentImageUrl) {
+                alert("Click the button to get an image first!");
+                return;
+            }
+
+            const link = document.createElement("a");
+            link.href = currentImageUrl;
+            link.download = "mood-boost.jpg";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            alert("Image downloaded! Open Instagram and upload it manually.");
         }
     </script>
 </body>
