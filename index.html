@@ -53,7 +53,7 @@
 
         img {
             display: block;
-            margin: 20px auto 40px; /* Added bottom margin to create space above the bottom ad */
+            margin: 20px auto; 
             max-width: 70vw;
             max-height: 60vh;
             object-fit: contain; 
@@ -86,18 +86,18 @@
             text-align: center;
             background-color: #f8f8f8;
             padding: 10px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            z-index: 1000;
+            margin-top: 20px;
         }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-7333912836569127">
 </head>
 <body>
+
     <div class="container">
         <div class="content-wrapper">
             <div class="ads">
+                <!-- OCMB Left Side Ad -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7333912836569127" data-ad-slot="5214428532" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
@@ -117,15 +117,19 @@
             </div>
 
             <div class="ads">
+                <!-- OCMB Right Side Ad -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7333912836569127" data-ad-slot="1133882608" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
-    </div>
 
-    <div class="ad-bottom">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7333912836569127" data-ad-slot="2588265193" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="ad-bottom">
+            <!-- OCMB Bottom Ad -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333912836569127" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7333912836569127" data-ad-slot="2588265193" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
     </div>
 
     <script>
@@ -166,5 +170,6 @@
             alert("Image downloaded! Open Instagram and upload it manually.");
         }
     </script>
+
 </body>
 </html>
